@@ -36,4 +36,8 @@ export class UsersItemComponent implements OnInit {
     this.title.setTitle(first);
   }
 
+  add() {
+    this.users.store().subscribe();
+  }
+
 }

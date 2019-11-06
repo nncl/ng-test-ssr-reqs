@@ -7,6 +7,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { UsersItemComponent } from './components/users/users-item/users-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,13 @@ import { HttpClientModule } from '@angular/common/http';
     UsersItemComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TransferHttpCacheModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

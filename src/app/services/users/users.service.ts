@@ -16,4 +16,8 @@ export class UsersService {
   get() {
     return this.http.get(`https://randomuser.me/api/`);
   }
+
+  store() {
+    return this.http.post(`https://randomuser.me/api/`, {});
+  }
 }

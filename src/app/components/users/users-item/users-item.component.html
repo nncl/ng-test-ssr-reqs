@@ -1,0 +1,6 @@
+<span *ngIf="loading">Loading...</span>
+
+<div *ngIf="!loading">
+  <h1>{{item.name.first}}</h1>
+  <img [src]="item.picture.large" [alt]="item.name.first">
+</div>

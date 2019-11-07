@@ -8,6 +8,7 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
 import { UsersItemComponent } from './components/users/users-item/users-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TransferHttpCacheModule } from '@nguniversal/common';
+import { TransferHttpModule, TransferHttpService } from '@gorniv/ngx-universal';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,10 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     AppRoutingModule,
     HttpClientModule,
-    TransferHttpCacheModule
+    TransferHttpCacheModule,
+    TransferHttpModule
   ],
-  providers: [],
+  providers: [TransferHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

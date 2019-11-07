@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
 export class UsersItemComponent implements OnInit {
   item: any;
   loading: boolean;
+  asyncRequestDone: boolean;
 
   constructor(public users: UsersService,
               public title: Title) {
@@ -17,6 +18,7 @@ export class UsersItemComponent implements OnInit {
 
   ngOnInit() {
     this.get();
+    this.getAsync();
   }
 
   get() {
@@ -28,6 +30,12 @@ export class UsersItemComponent implements OnInit {
         this.loading = false;
         this.setTitle();
       }
+    );
+  }
+
+  getAsync() {
+    this.users.getAsync().subscribe(
+      res => console.log(`Async request done`, res)
     );
   }
 

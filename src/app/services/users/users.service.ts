@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TransferHttpService } from '@gorniv/ngx-universal';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(public http: HttpClient) {
+  constructor(private http: TransferHttpService,
+              public httpClient: HttpClient) {
   }
 
   index() {
@@ -15,6 +17,10 @@ export class UsersService {
 
   get() {
     return this.http.get(`https://randomuser.me/api/`);
+  }
+
+  getAsync() {
+    return this.httpClient.get(`https://randomuser.me/api/`);
   }
 
   store() {

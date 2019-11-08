@@ -34,9 +34,12 @@ export class UsersItemComponent implements OnInit {
   }
 
   getAsync() {
-    this.users.getAsync().subscribe(
-      res => console.log(`Async request done`, res)
-    );
+    const arr = Array.from(Array(10).keys());
+    arr.map(() => {
+      this.users.getAsync().subscribe(
+        res => console.log(`Async request done`, res)
+      );
+    });
   }
 
   setTitle() {

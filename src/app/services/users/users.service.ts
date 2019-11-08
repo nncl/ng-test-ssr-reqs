@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TransferHttpService } from '@gorniv/ngx-universal';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
+  isBrowser: boolean;
 
-  constructor(private http: TransferHttpService,
-              public httpClient: HttpClient) {
+  constructor(private http: HttpClient,
+              @Inject(PLATFORM_ID) platformId: object) {
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   index() {
@@ -20,7 +22,10 @@ export class UsersService {
   }
 
   getAsync() {
-    return this.httpClient.get(`https://randomuser.me/api/`);
+    if (!this.isBrowser) {
+      return;
+    }
+    return this.http.get(`https://randomuser.me/api/?results=2`);
   }
 
   store() {

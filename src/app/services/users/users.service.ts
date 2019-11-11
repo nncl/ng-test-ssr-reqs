@@ -1,6 +1,7 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
+import { EMPTY } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class UsersService {
 
   getAsync() {
     if (!this.isBrowser) {
-      return;
+      return EMPTY;
     }
     return this.http.get(`https://randomuser.me/api/?results=2`);
   }

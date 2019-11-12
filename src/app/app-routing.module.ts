@@ -1,32 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UsersListComponent } from './components/users/users-list/users-list.component';
-import { UsersItemComponent } from './components/users/users-item/users-item.component';
-
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'users',
-    pathMatch: 'full'
+    component: HomeComponent
   },
-  {
-    path: 'users',
-    component: UsersListComponent
-  },
-  {
-    path: 'users/:id',
-    component: UsersItemComponent
-  },
+  { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) },
   { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   {
     path: '**',
-    redirectTo: 'users'
+    redirectTo: ''
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { initialNavigation: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

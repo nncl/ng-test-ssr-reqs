@@ -18,6 +18,7 @@ const routes: Routes = [
     path: 'users/:id',
     component: UsersItemComponent
   },
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   {
     path: '**',
     redirectTo: 'users'

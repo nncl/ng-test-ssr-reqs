@@ -22,11 +22,11 @@ export class UsersService {
     return this.http.get(`https://randomuser.me/api/`);
   }
 
-  getAsync() {
+  getAsync(results: number = 2) {
     if (!this.isBrowser) {
       return EMPTY;
     }
-    return this.http.get(`https://randomuser.me/api/?results=2`);
+    return this.http.get(`https://randomuser.me/api/?results=${results}`);
   }
 
   store() {

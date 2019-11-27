@@ -6,12 +6,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
-  },
-  { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) },
-  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
-  {
-    path: '**',
-    redirectTo: ''
   }
 ];
 
